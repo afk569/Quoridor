@@ -41,7 +41,7 @@ def main():
     running = True  # game loop
     p1_to_move = True  # p1 turn
 
-    AI = Bot.Bot(gs, players)
+    AI = Bot.Bot(gs, players, False)
 
     while running:
         for e in pg.event.get():
@@ -50,7 +50,7 @@ def main():
             elif e.type == pg.MOUSEMOTION:
                 location = pg.mouse.get_pos()  # (x,y) location of the mouse
             if not p1_to_move:  # AI turn
-                AI.validChoices(gs, players)
+                AI.validChoices(gs, players, False)
                 c, try_to_build = AI.randomAlgo()
                 if try_to_build:
                     _, add_wall = gs.makeBuild(players, p1_to_move, c)
